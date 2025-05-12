@@ -6,13 +6,37 @@ package Datos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import javax.swing.JOptionPane;
 /**
  *
  * @author oscar
  */
+
+public class Conexion {
+    private final String db = "dbtalleres"; // nombre de la base de datos (no de la tabla)
+    private final String url = "jdbc:mysql://localhost:3306/" + db + "?serverTimezone=UTC"; // Añade serverTimezone para evitar problemas comunes
+    private final String user = "root";
+    public String pass = "1989cero"; // Considera no hacerla pública y pasarla al constructor o leerla de un archivo de config
+
+    public Conexion() {
+    }
+
+    // El método ahora declara que puede lanzar SQLException además de ClassNotFoundException
+    public Connection conectar() throws SQLException, ClassNotFoundException {
+        Connection dbConn = null;
+        // No es necesario un try-catch aquí si dejas que las excepciones se propaguen
+        // La clase que llama (Usuario) deberá manejar estas excepciones.
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        dbConn = DriverManager.getConnection(this.url, this.user, this.pass);
+        // System.out.println("Conexión exitosa a la base de datos: " + db); // Opcional: para depuración
+        return dbConn;
+    }
+}
+
+
+/*
 public class Conexion {
     private final String db="dbtalleres";//nombre de la tabla
     private final String url="jdbc:mysql://localhost:3306/"+db;
@@ -21,7 +45,7 @@ public class Conexion {
     
     public Conexion(){}
     
-    public Connection conector() throws ClassNotFoundException{
+    public Connection conectar() throws ClassNotFoundException{
         Connection dbConn=null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,4 +63,4 @@ public class Conexion {
     
 }
 
-
+*/
