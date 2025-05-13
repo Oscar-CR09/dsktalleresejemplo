@@ -156,6 +156,7 @@ public class Usuario {
         return null;
     }
     return modelo;
+        }
            /* try {
                 Connection cn =cnx.conectar();
                 Statement st = cn.createStatement();
@@ -178,7 +179,8 @@ public class Usuario {
                 JOptionPane.showConfirmDialog(null,e+"Error mostrar"); 
                 return null; 
             }
-        }
+        }*/
+           
         public DefaultTableModel listarUsuarios(){
             DefaultTableModel modelo;
             totReg=0;
@@ -206,10 +208,10 @@ public class Usuario {
             } catch (Exception e) {
                 JOptionPane.showConfirmDialog(null,e+"Error mostrar"); 
                 return null; 
-            }*/
+            }
             
         }
-        public boolean inserta_Usuario(DatosUsuario usuario) {
+        public boolean insertar_Usuario(DatosUsuario usuario) {
     // Define cSQL localmente, es más limpio.
     String sql = "INSERT INTO usuarios(Cedula, Nombre, Apellidos, Direccion, Telefono, Email, Fecha_Ingreso) VALUES(?,?,?,?,?,?,?)";
     Connection cn = null; // Declara fuera para poder verificarla si no usas try-with-resources anidado profundamente
