@@ -3,12 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Formularios;
+import Datos.DatosUsuario;
+import Logica.Usuario;
+import java.awt.event.KeyEvent;
+import java.sql.Date;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author oscar
  */
 public class frmNuevoUsuario extends javax.swing.JDialog {
+    DefaultTableModel modelo;
+    
 
     /**
      * Creates new form frmNuevoUsuario
@@ -27,21 +36,263 @@ public class frmNuevoUsuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDireccion = new javax.swing.JTextArea();
+        txtTelefono = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Creacion de un nuevo Usuario"));
+
+        jLabel1.setText("Cédula:");
+
+        jLabel2.setText("Nombre:");
+
+        jLabel3.setText("Apellidos:");
+
+        jLabel4.setText("Dirección:");
+
+        jLabel5.setText("Teléfono:");
+
+        jLabel6.setText("Email:");
+
+        jLabel7.setText("Fecha Ingreso:");
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
+
+        txtDireccion.setColumns(20);
+        txtDireccion.setRows(5);
+        jScrollPane1.setViewportView(txtDireccion);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtCedula)
+                        .addComponent(txtNombre)
+                        .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(jLabel1)
+                                                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel2))
+                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel3))
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addGap(64, 64, 64))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnGuardar)
+                .addGap(30, 30, 30)
+                .addComponent(btnCancelar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if (txtCedula.getText().length()>0) {
+                Usuario usuario = new Usuario();
+                modelo=usuario.BuscarCedula(txtCedula.getText());
+                for (int i = 0; i < modelo.getRowCount(); i++) {
+                    txtNombre.setText(modelo.getValueAt(i, 1).toString());
+                    txtApellido.setText(modelo.getValueAt(i, 2).toString());
+                    txtDireccion.setText(modelo.getValueAt(i, 3).toString());
+                    txtTelefono.setText(modelo.getValueAt(i, 4).toString());
+                    txtEmail.setText(modelo.getValueAt(i, 5).toString());
+                    String fecha = modelo.getValueAt(i, 6).toString();
+                    int longi =fecha.length();
+                    fecha = fecha.substring(8,longi)+"/"+fecha.substring(5,longi-3)+"/"+fecha.substring(0,longi-6);
+                    dateChooserCombo1.setText(fecha);
+                    
+                }
+            }
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        
+     // Validación básica de campos vacíos
+        if (txtCedula.getText().trim().isEmpty() ||
+            txtNombre.getText().trim().isEmpty() ||
+            txtApellido.getText().trim().isEmpty() ||
+            txtDireccion.getText().trim().isEmpty() ||
+            txtTelefono.getText().trim().isEmpty() ||
+            txtEmail.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos los campos de texto deben estar llenos.", "Validación", JOptionPane.WARNING_MESSAGE);
+            return; // Salir del método si hay campos vacíos
+        }
+
+        // Validar que se haya seleccionado una fecha
+        if (dateChooserCombo1.getSelectedDate() == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha de ingreso.", "Validación", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            Usuario usuario = new Usuario(); // Clase de Lógica
+            DatosUsuario obj = new DatosUsuario(); // Clase de Datos (POJO)
+
+            // Establecer los valores en el objeto DatosUsuario
+            obj.setCedula(txtCedula.getText().trim());
+            obj.setNombre(txtNombre.getText().trim());
+            obj.setApellido(txtApellido.getText().trim());
+            obj.setDireccion(txtDireccion.getText().trim());
+            obj.setTelefono(txtTelefono.getText().trim());
+            obj.setEmail(txtEmail.getText().trim());
+
+            // Obtener la fecha del componente DateChooserCombo de forma correcta
+            Calendar selectedCalendar = dateChooserCombo1.getSelectedDate();
+            java.util.Date utilDate = selectedCalendar.getTime();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            obj.setFecha(sqlDate);
+
+            if (usuario.insertar_Usuario(obj)) { // Asumiendo que insertar_Usuario devuelve boolean
+                JOptionPane.showMessageDialog(this, "Registro agregado exitosamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                dispose(); // Cerrar el diálogo si el guardado fue exitoso
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al agregar el registro.\nVerifique los datos o contacte al administrador.", "Error de Inserción", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            // Considera registrar el error en un log o mostrar un mensaje más específico si es posible
+            JOptionPane.showMessageDialog(this, "Ocurrió un error inesperado: " + e.getMessage(), "Error General", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // Imprimir el stack trace para depuración en la consola
+        }
+        /*
+        try {
+            Usuario usuario =new Usuario();
+        DatosUsuario obj =new DatosUsuario();
+        obj.setCedula(txtCedula.getText());
+        obj.setNombre(txtNombre.getText());
+        obj.setApellido(txtApellido.getText());
+        obj.setDireccion(txtDireccion.getText());
+        obj.setTelefono(txtTelefono.getText());
+        obj.setEmail(txtEmail.getText());
+        obj.setFecha(Date.valueOf(dateChooserCombo1.getDateFormat()));
+        if (usuario.insertar_Usuario(obj)==true) {
+            JOptionPane.showMessageDialog(null, "Registro agregado!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Registro no Agregado!");
+        }
+        dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        */
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,5 +337,23 @@ public class frmNuevoUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private datechooser.beans.DateChooserCombo dateChooserCombo1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextArea txtDireccion;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

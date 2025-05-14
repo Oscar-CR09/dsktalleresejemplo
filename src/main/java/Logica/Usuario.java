@@ -233,7 +233,7 @@ public class Usuario {
         try (PreparedStatement pst = cn.prepareStatement(sql)) {
             pst.setString(1, usuario.getCedula());
             pst.setString(2, usuario.getNombre());
-            pst.setString(3, usuario.getApellidos());
+            pst.setString(3, usuario.getApellido());
             pst.setString(4, usuario.getDireccion());
             pst.setString(5, usuario.getTelefono());
             pst.setString(6, usuario.getEmail());
@@ -331,7 +331,7 @@ public class Usuario {
                 PreparedStatement pst =cn.prepareStatement(cSQL);*/
                 pst.setString(7, usuario.getCedula());
                 pst.setString(1, usuario.getNombre());
-                pst.setString(2, usuario.getApellidos());
+                pst.setString(2, usuario.getApellido());
                 pst.setString(3, usuario.getDireccion());
                 pst.setString(4, usuario.getTelefono());
                 pst.setString(5, usuario.getEmail());
